@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "canvas": "^2.5.0",
-    "jsdom": "^15.2.1"
+    "canvas": "^2.5.0"
   }
 }
