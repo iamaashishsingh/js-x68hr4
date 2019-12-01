@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,18 +14,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.4.0/fabric.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
 </head>
-
 <body>
 	<section class="canvas">
 		<div class="container-fluid">
-			<div class="row">
-				<div id="mydivcanvas" class="col-sm-12 col-md-6 col-lg-6">
-				 <canvas id="c" width="500px" height="500" style="position: absolute;top:0;border:1px solid;"></canvas>
-            <canvas id="cimg" width="500px" height="500px" style="border:1px solid;position: absolute;top:0;"></canvas>
+			<div class="row" >
+      <div class="canvas-wrapper">
+	      <div class="col-sm-12 col-md-6 col-lg-6 " id="mydivcanvas" > 
+				 <canvas id="c" width="500" height="500"></canvas>
+            <canvas id="cimg" width="500" height="500" ></canvas>
 				</div>
+      </div>
+			
 				<div class="col-sm-12 col-md-6 col-lg-6">
 					<div class="image-editor-controls">
-						<p style="margin-top: 100px;">
+				
 							<!-- <button class="btn btn-primary" onclick="addTextbox()">Add textbox</button> -->
 							<div class="input-group mb-0">
 								<div class="input-group-prepend">
@@ -40,14 +41,12 @@
                   <option value="3" onclick="addPolygon()">Polygon</option>
                 </select>
 							</div>
-						</p>
+						
 						<a class="btn btn-primary btn-md btn-block" download="myImage.jpg" href=""
 							onclick="PrintDiv()">Download Image</a>
 						<a href="https://js-ksdxz2.stackblitz.io/" class="home-link" style="color:white">back to
 							home</a>
-
-
-					</div>
+     		</div>
 				</div>
 			</div>
 		</div>
@@ -57,30 +56,25 @@
     var cimg = new fabric.Canvas('cimg');
     var addBGImg = function () {
       var imgUrl = location.search.replace('?url=', '');
-      
       var ctx = cimg.getContext("2d");
       var background = new Image();
       background.crossOrigin = "Anonymous";
       background.src = imgUrl;
-
-
       background.onload = function () {
-        ctx.drawImage(background, 0, 0);
+      ctx.drawImage(background, 0, 0);
       }
     }
-
-       var PrintDiv = function () {
+      var PrintDiv = function () {
       var div = document.getElementById('mydivcanvas');
-      
       html2canvas((div), {
-        allowTaint: true,
-        // taintTest: false,
-        onrendered: function (canvas) {
-          var myImage = canvas.toDataURL();
-          downloadURI(myImage, "canvas_img.png");
-        }
-      });
+      allowTaint: true,
+      // taintTest: false,
+      onrendered: function (canvas) {
+      var myImage = canvas.toDataURL();
+      downloadURI(myImage, "canvas_img.png");
     }
+  });
+}
 
 
 
@@ -190,11 +184,9 @@ var resetSelectedIndex = function () {
   document.getElementById('option-shape').selectedIndex = 0;
 }
 // dowload canvas image
-
 function schedule(selectedValue) {
   addSelectedShapes();
 }
-
 addBGImg();
 var addShape = function (shapeName) {
   console.log('adding shape', shapeName);
@@ -286,33 +278,30 @@ var addResizeFilter = function () {
   setActiveStyle('resizeFilter', new fabric.Image.filters.Resize());
   canvas.requestRenderAll();
 }
-
-
 addTextbox = function () {
-  text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.\n' +
-    'Ut enim ad minim veniam,\nquis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo         consequat.';
-  textSample = new fabric.Textbox(text.slice(0, getRandomInt(0, text.length)), {
-    fontSize: 20,
-    left: getRandomInt(350, 400),
-    top: getRandomInt(350, 400),
-    fontFamily: 'helvetica',
-    angle: 0, // getRandomInt(-10, 10),
-    fill: '#' + getRandomColor(),
-    fontWeight: '',
-    originX: 'left',
-    width: 300,
-    hasRotatingPoint: true,
-    centerTransform: true
-  });
-  canvas.add(textSample);
-  AddLayer("Text");
+text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.\n' +
+'Ut enim ad minim veniam,\nquis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo         consequat.';
+textSample = new fabric.Textbox(text.slice(0, getRandomInt(0, text.length)), {
+fontSize: 20,
+left: getRandomInt(350, 400),
+top: getRandomInt(350, 400),
+fontFamily: 'helvetica',
+angle: 0, // getRandomInt(-10, 10),
+fill: '#' + getRandomColor(),
+fontWeight: '',
+originX: 'left',
+width: 300,
+hasRotatingPoint: true,
+centerTransform: true
+});
+canvas.add(textSample);
+AddLayer("Text");
 };
 var layers = ["image"];
 function AddLayer(layer) {
-  layers.push(layer);
-  console.log(layers);
+layers.push(layer);
+console.log(layers);
 }
-	</script>
+</script>
 </body>
-
 </html>

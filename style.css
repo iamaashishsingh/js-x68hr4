@@ -123,16 +123,11 @@ body {
   .add-caption-btn{
     width: 100%;
   }
-  .image-editor-controls{
-    position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-  }
+
   .home-link{
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding-bottom: 125px;
   }
   #NotFound{
     color: red;
@@ -147,4 +142,29 @@ body {
   top: 0 !important;
   z-index: 100 !important;
 }
-
+#c{
+  position: absolute;
+  top:0;
+  border:1px solid;
+}
+#cimg{
+ border:1px solid;position: absolute;top:0;
+}
+  .image-editor-controls{
+    position: relative;
+    left:0%;
+    top:50%;
+    
+   
+  }
+  
+  @media only screen and (max-width: 768px) {
+  .image-editor-controls {
+    position: absolute;
+    left: 20%;
+    margin-top: 20px;
+  }
+}
+.canvas-wrapper{
+  padding:50px;
+}
