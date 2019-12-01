@@ -120,12 +120,18 @@ body {
     display: table;
     clear: both;
   }
-  .add-caption-btn{
-    width: 100%;
+
+
+  .css-btn{
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    margin:auto;
   }
 
   .home-link{
     display: flex;
+    color: white;
     justify-content: center;
     padding-bottom: 125px;
   }
@@ -152,19 +158,24 @@ body {
 }
   .image-editor-controls{
     position: relative;
-    left:0%;
+    left:10%;
+    right: 10%;
     top:50%;
-    
-   
   }
   
   @media only screen and (max-width: 768px) {
   .image-editor-controls {
     position: absolute;
-    left: 20%;
+    left: 15%;
     margin-top: 20px;
   }
 }
 .canvas-wrapper{
   padding:50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#option-shape{
+  width: 120px;
 }

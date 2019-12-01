@@ -29,20 +29,24 @@
 					<div class="image-editor-controls">
 				
 							<!-- <button class="btn btn-primary" onclick="addTextbox()">Add textbox</button> -->
-							<div class="input-group mb-0">
-								<div class="input-group-prepend">
-									<label class="btn btn-primary " type="button" for="inputGroupSelect01" onclick="addTextbox()">Add Caption</label>
-								</div>
-								<select class="custom-select" id="option-shape" onchange="schedule(this.value)">
-                  <option selected>Add Shape</option>
+							<div class="input-group mb-1">
+							
+                <span class="css-btn add-shape-btn">
+	              <span class="input-group-prepend">
+									<label class="btn btn-primary caption-btn  css-btn" type="button" for="inputGroupSelect01" onclick="addTextbox()">Add Caption</label>
+								</span>
+              	<select class="custom-select css-btn" id="option-shape" onchange="schedule(this.value)">
+                  <option selected style:"width:20px"> Add Shape</option>
                   <option value="1" onclick="addRect()">Rectangle</option>
                   <option value="2" onclick="addCircle()">Circle</option>
                   <option value="3" onclick="addTriangle()">Triangle</option>
                   <option value="3" onclick="addPolygon()">Polygon</option>
                 </select>
-							</div>
+                </div>
+							
+							</span>
 						
-						<a class="btn btn-primary btn-md btn-block" download="myImage.jpg" href=""
+						<a class="btn btn-primary css-btn" download="myImage.jpg" href=""
 							onclick="PrintDiv()">Download Image</a>
 						<a href="https://js-ksdxz2.stackblitz.io/" class="home-link" style="color:white">back to
 							home</a>
