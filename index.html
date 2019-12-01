@@ -42,7 +42,7 @@
 							</div>
 						</p>
 						<a id="download" class="btn btn-primary btn-md btn-block" download="myImage.jpg" href=""
-							onclick="download_img(this);">Download Image</a>
+							onclick="PrintDiv()">Download Image</a>
 						<a href="https://js-ksdxz2.stackblitz.io/" class="home-link" style="color:white">back to
 							home</a>
 
@@ -189,10 +189,7 @@ var resetSelectedIndex = function () {
   document.getElementById('option-shape').selectedIndex = 0;
 }
 // dowload canvas image
-var download_img = function (el) {
-  var image = canvas.toDataURL("image/jpg");
-  el.href = image;
-};
+
 function schedule(selectedValue) {
   addSelectedShapes();
 }
