@@ -155,6 +155,7 @@ body {
 }
 #cimg{
  border:1px solid;position: absolute;top:0;
+ background-size: cover;
 }
   .image-editor-controls{
     position: relative;
@@ -178,4 +179,8 @@ body {
 }
 #option-shape{
   width: 120px;
+}
+#mydivcanvas{
+  width: 100%;
+  height: 100%;
 }
