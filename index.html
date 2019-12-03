@@ -24,28 +24,22 @@
             <canvas id="cimg" width="500" height="500" ></canvas>
 				</div>
       </div>
-			
-				<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="col-sm-12 col-md-6 col-lg-6">
 					<div class="image-editor-controls">
-				
-							<!-- <button class="btn btn-primary" onclick="addTextbox()">Add textbox</button> -->
-							<div class="input-group mb-1">
-							
-                <span class="css-btn add-shape-btn">
-	              <span class="input-group-prepend">
-									<label class="btn btn-primary caption-btn  css-btn" type="button" for="inputGroupSelect01" onclick="addTextbox()">Add Caption</label>
+					<div class="input-group mb-1">
+					<span class="css-btn add-shape-btn">
+	        <span class="input-group-prepend">
+					<label class="btn btn-primary caption-btn  css-btn" type="button" for="inputGroupSelect01" onclick="addTextbox">Add Caption</label>
 								</span>
-              	<select class="custom-select css-btn" id="option-shape" onchange="schedule(this.value)">
+              <select class="custom-select css-btn" id="option-shape"  onchange="schedule(this.value)">
                   <option selected style:"width:20px"> Add Shape</option>
                   <option value="1" onclick="addRect()">Rectangle</option>
                   <option value="2" onclick="addCircle()">Circle</option>
                   <option value="3" onclick="addTriangle()">Triangle</option>
                   <option value="3" onclick="addPolygon()">Polygon</option>
                 </select>
-                </div>
-							
-							</span>
-						
+              </div>
+						</span>
 						<a class="btn btn-primary css-btn" 
 							onclick="PrintDiv()">Download Image</a>
 						<a href="https://js-ksdxz2.stackblitz.io/" class="home-link" style="color:white">back to
@@ -56,48 +50,38 @@
 		</div>
 	</section>
 	<script>
-		var canvas = new fabric.Canvas('c');
-    var cimg = new fabric.Canvas('cimg');
-    var addBGImg = function () {
-      var imgUrl = location.search.replace('?url=', '');
-      var ctx = cimg.getContext("2d");
-      var background = new Image();
-      background.crossOrigin = "Anonymous";
-      background.src = imgUrl;
-      background.onload = function () {
-      ctx.drawImage(background, 0, 0);
-      }
-    }
-      var PrintDiv = function () {
+	 var canvas = new fabric.Canvas('c');
+   var cimg = new fabric.Canvas('cimg');
+   var addBGImg = function () {
+   var imgUrl = location.search.replace('?url=', '');
+   var ctx = cimg.getContext("2d");
+   var background = new Image();
+   background.crossOrigin = "Anonymous";
+   background.src = imgUrl;
+   background.onload = function () {
+   ctx.drawImage(background, 0, 0);
+  }
+}
+     var PrintDiv = function () {
       var div = document.getElementById('mydivcanvas');
       html2canvas((div), {
       allowTaint: true,
-      // taintTest: false,
       onrendered: function (canvas) {
       var myImage = canvas.toDataURL();
       downloadURI(myImage, "canvas_img.png");
     }
   });
 }
-
-
-
 var downloadURI =    function (uri, name) {
       var link = document.createElement("a");
-
       link.download = name;
       link.href = uri;
       document.body.appendChild(link);
       link.click();
       link.remove();
-      //after creating link you should delete dynamic link
-      //clearDynamicLink(link); 
-    }
-
-
-
+  }
 var addText = function () {
-  text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.\n' +
+  text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit,\nsed   do eiusmod tempor incididunt\nut labore et dolore magna aliqua.\n' +
     'Ut enim ad minim veniam,\nquis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo consequat.';
   textSample = new fabric.Text(text.slice(0, getRandomInt(0, text.length)), {
     left: getRandomInt(350, 400),
@@ -219,8 +203,8 @@ var addPatternRect = function () {
   canvas.add(rect);
 };
 var addRect = function () {
-  coord = getRandomLeftTop();
-  canvas.add(new fabric.Rect({
+    coord = getRandomLeftTop();
+    canvas.add(new fabric.Rect({
     left: coord.left,
     top: coord.top,
     fill: '#' + getRandomColor(),
@@ -243,15 +227,15 @@ var getRandomLeftTop = function () {
   return { left: Math.random() * 150, top: Math.random() * 180 }
 }
 var addTriangle = function () {
-  coord = getRandomLeftTop();
-  canvas.add(new fabric.Triangle({
+    coord = getRandomLeftTop();
+    canvas.add(new fabric.Triangle({
     left: coord.left,
     top: coord.top,
     fill: '#' + getRandomColor(),
     width: 50,
     height: 50,
     opacity: 0.8
-  }));
+ }));
 };
 var addPolygon = function () {
   coord = getRandomLeftTop();
@@ -268,14 +252,14 @@ var addPolygon = function () {
 function addImage(imageName, minScale, maxScale) {
   coord = getRandomLeftTop();
   fabric.Image.fromURL(imageName, function (image) {
-    image.set({
-      left: 0, //coord.left,
-      top: 0, // coord.top,
-      angle: 0 // getRandomInt(-10, 10)
-    })
-      .scale(0.5)// getRandomNum(minScale, maxScale))
-      .setCoords();
-    canvas.add(image);
+  image.set({
+  left: 0, //coord.left,
+  top: 0, // coord.top,
+  angle: 0 // getRandomInt(-10, 10)
+})
+  .scale(0.5)// getRandomNum(minScale, maxScale))
+  .setCoords();
+  canvas.add(image);
   });
 };
 var addResizeFilter = function () {
