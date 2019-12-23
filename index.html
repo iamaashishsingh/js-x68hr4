@@ -29,7 +29,7 @@
 					<div class="input-group mb-1">
 					<span class="css-btn add-shape-btn">
 	        <span class="input-group-prepend">
-					<label class="btn btn-primary caption-btn  css-btn" type="button" for="inputGroupSelect01" onclick="addTextbox">Add Caption</label>
+					<label class="btn btn-primary caption-btn  css-btn" type="button" for="inputGroupSelect01" onclick="addText">Add Caption</label>
 								</span>
               <select class="custom-select css-btn" id="option-shape"  onchange="schedule(this.value)">
                   <option selected style:"width:20px"> Add Shape</option>
@@ -104,7 +104,7 @@ var getRandomInt = function () {
 var addTextbox = function () {
   text = 'Lorem ipsum dolor sit amet,\nconsectetur adipisicing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore magna aliqua.\n' +
     'Ut enim ad minim veniam,\nquis nostrud exercitation ullamco\nlaboris nisi ut aliquip ex ea commodo consequat.';
-  textSample = new fabric.Textbox(text.slice(0, getRandomInt(0, text.length)), {
+    textSample = new fabric.Textbox(text.slice(0, getRandomInt(0, text.length)), {
     fontSize: 20,
     left: getRandomInt(350, 400),
     top: getRandomInt(350, 400),
